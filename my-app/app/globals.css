@@ -113,3 +113,27 @@ body {
 .hover\:text-primary-dark:hover {
   color: var(--primary-dark);
 }
+
+.text-error {
+  color: var(--error);
+}
+
+.border-error {
+  border-color: var(--error);
+}
+
+.bg-error {
+  background-color: var(--error);
+}
+
+.text-success {
+  color: var(--success);
+}
+
+.border-success {
+  border-color: var(--success);
+}
+
+.bg-success {
+  background-color: var(--success);
+}

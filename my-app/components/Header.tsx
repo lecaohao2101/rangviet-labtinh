@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { useTheme } from "@/contexts/ThemeContext";
 
 /**
@@ -13,6 +14,7 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
+  const pathname = usePathname();
 
   const menuItems = [
     { label: "Trang chủ", href: "/" },
@@ -53,15 +55,25 @@ export default function Header() {
 
           {/* Desktop Navigation */}
           <nav className="hidden items-center space-x-1 md:flex">
-            {menuItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="rounded-md px-3 py-2 text-sm font-medium text-foreground transition-all duration-200 hover:bg-accent-light hover:text-primary-dark"
-              >
-                {item.label}
-              </Link>
-            ))}
+            {menuItems.map((item) => {
+              const isActive =
+                pathname === item.href ||
+                (item.href !== "/" && pathname.startsWith(item.href));
+              
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`rounded-md px-3 py-2 text-sm font-medium transition-all duration-200 ${
+                    isActive
+                      ? "bg-primary text-white hover:bg-primary-dark"
+                      : "text-foreground hover:bg-accent-light hover:text-primary-dark"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
           </nav>
 
           {/* Search Icon & Mobile Menu Button */}
@@ -199,16 +211,26 @@ export default function Header() {
         {isMobileMenuOpen && (
           <nav className="border-t border-border py-4 md:hidden transition-colors duration-300">
             <div className="flex flex-col space-y-1">
-              {menuItems.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="rounded-md px-3 py-2 text-sm font-medium text-foreground transition-all duration-200 hover:bg-accent-light hover:text-primary-dark"
-                >
-                  {item.label}
-                </Link>
-              ))}
+              {menuItems.map((item) => {
+                const isActive =
+                  pathname === item.href ||
+                  (item.href !== "/" && pathname.startsWith(item.href));
+                
+                return (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className={`rounded-md px-3 py-2 text-sm font-medium transition-all duration-200 ${
+                      isActive
+                        ? "bg-primary text-white hover:bg-primary-dark"
+                        : "text-foreground hover:bg-accent-light hover:text-primary-dark"
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
             </div>
           </nav>
         )}
