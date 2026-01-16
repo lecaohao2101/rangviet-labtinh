@@ -51,9 +51,10 @@ export default function Footer() {
                   Phong, Thành phố Biên Hoà, Tỉnh Đồng Nai
                 </span>
               </div>
-              <div className="flex items-center gap-2">
+              {/* Hotline */}
+              <div className="flex items-start gap-2">
                 <svg
-                  className="h-5 w-5 flex-shrink-0 text-primary"
+                  className="h-5 w-5 flex-shrink-0 mt-0.5 text-primary"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -65,7 +66,7 @@ export default function Footer() {
                     d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
                   />
                 </svg>
-                <div>
+                <div className="space-y-1">
                   <div>
                     <strong>Hotline:</strong>{" "}
                     <a
@@ -85,15 +86,31 @@ export default function Footer() {
                     </a>{" "}
                     (Mr.Tình)
                   </div>
-                  <div>
-                    <strong>CSKH:</strong>{" "}
-                    <a
-                      href="tel:02516502727"
-                      className="hover:text-primary transition-colors"
-                    >
-                      02516502727
-                    </a>
-                  </div>
+                </div>
+              </div>
+              {/* CSKH */}
+              <div className="flex items-center gap-2">
+                <svg
+                  className="h-5 w-5 flex-shrink-0 text-primary"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z"
+                  />
+                </svg>
+                <div>
+                  <strong>CSKH:</strong>{" "}
+                  <a
+                    href="tel:02516502727"
+                    className="hover:text-primary transition-colors"
+                  >
+                    02516502727
+                  </a>
                 </div>
               </div>
               <div className="flex items-center gap-2">
