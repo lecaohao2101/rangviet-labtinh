@@ -80,9 +80,6 @@ export default function FloatingButtons() {
                  height={24}
                  className="h-6 w-6"
                />
-               {/* <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">
-                 Messenger
-               </span> */}
              </a>
 
              {/* Zalo */}
