@@ -52,7 +52,7 @@ export default function NewsPage() {
       date: "2022-10-31T12:37:00",
       slug: "rang-su-duc-la-gi",
       excerpt:
-        "Răng sứ Đức là một trong những loại răng sứ cao cấp được sản xuất tại Đức với công nghệ hiện đại và chất lượng vượt trội. Tìm hiểu về đặc điểm, ưu điểm và ứng dụng của răng sứ Đức trong nha khoa thẩm mỹ.",
+        "Răng sứ Đức thật ra là tên gọi chung các loại răng sứ được sản xuất và cung cấp bởi các công ty răng sứ của Đức. Xuất xứ \"Made in Germany\" luôn có sức ảnh hưởng và tạo được lòng tin vững chắc trong lòng người tiêu dùng trên toàn thế giới.",
       category: "Kiến thức",
     },
     {
@@ -61,7 +61,7 @@ export default function NewsPage() {
       date: "2022-10-31T12:35:00",
       slug: "3-dong-rang-toan-su-duoc-danh-gia-tot-nhat-hien-nay",
       excerpt:
-        "Khám phá 3 dòng răng toàn sứ được đánh giá cao nhất trên thị trường hiện nay. So sánh về chất lượng, độ bền, thẩm mỹ và giá cả để giúp bạn lựa chọn sản phẩm phù hợp nhất.",
+        "Khám phá 3 dòng răng toàn sứ được đánh giá tốt nhất: Zirconia Ceramill Zolid (Đức), Cercon và Cercon HT (Đức), 3M Lava Plus (Mỹ). Tất cả đều có tiêu chuẩn lưu hành quốc tế và thẻ bảo hành IDPI.",
       category: "Sản phẩm",
     },
     {
@@ -70,7 +70,7 @@ export default function NewsPage() {
       date: "2022-10-31T12:34:00",
       slug: "rang-su-nacera-la-gi-uu-nhuoc-diem-gia-ca",
       excerpt:
-        "Răng sứ Nacera là dòng sản phẩm răng sứ cao cấp với nhiều ưu điểm vượt trội. Tìm hiểu chi tiết về đặc điểm, ưu nhược điểm, giá cả và quy trình sử dụng răng sứ Nacera.",
+        "Răng sứ Nacera là răng toàn sứ cao cấp của DOCERAM GmbH (Đức) với 16 màu răng, chịu lực 600-1200 Mpa. Được chế tác bằng chất liệu Nha khoa cao cấp với tính thẩm mỹ đẹp như răng thật, không lo mảng bám làm vàng ố, xỉn màu.",
       category: "Sản phẩm",
     },
   ];
