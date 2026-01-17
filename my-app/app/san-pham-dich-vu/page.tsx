@@ -63,7 +63,7 @@ export default function ProductsServicesPage() {
       date: "2022-10-31T14:41:00",
       image: "/san-pham-dich-vu-1.jpg",
       excerpt:
-        "Phục hình Implant là giải pháp tối ưu để thay thế răng mất, mang lại hàm răng hoàn chỉnh và tự nhiên với độ bền cao.",
+        "Kỹ thuật lấy dấu Implant và phục hình răng sứ trên Implant. Quy trình từ tái khám, kiểm tra tích hợp xương, gắn trụ lành thương đến gắn răng sứ cố định. Giải pháp tối ưu để thay thế răng mất với độ bền cao.",
       category: "Dịch vụ",
     },
     {
@@ -72,7 +72,7 @@ export default function ProductsServicesPage() {
       date: "2022-10-17T15:56:00",
       image: "/san-pham-dich-vu-2.jpg",
       excerpt:
-        "Răng sứ EMAX Zirconia là loại răng sứ cao cấp với tính thẩm mỹ vượt trội, độ trong suốt tự nhiên và độ bền cao.",
+        "Răng sứ Emax thuộc dòng sứ không kim loại từ Ivoclar Vivadent. Emax Press (Lithium Disilicate) và Sagemax (Emax Zirconia) với tính thẩm mỹ cao nhất, độ trong mờ tự nhiên và độ bền vượt trội.",
       category: "Sản phẩm",
     },
     {
@@ -81,7 +81,7 @@ export default function ProductsServicesPage() {
       date: "2022-10-17T16:00:00",
       image: "/san-pham-dich-vu-3.png",
       excerpt:
-        "Răng sứ Cercon là loại răng sứ cao cấp được sản xuất tại Đức với khả năng chịu lực lên đến 900Mpa và màu sắc tự nhiên.",
+        "Răng sứ Cercon là loại răng sứ cao cấp được sản xuất tại Đức với khả năng chịu lực lên đến 900Mpa, màu sắc tự nhiên và độ bền cao. Không bị oxi hoá, không làm viền nướu bị đen. Tuổi thọ 15-20 năm.",
       category: "Sản phẩm",
     },
     {
@@ -90,7 +90,7 @@ export default function ProductsServicesPage() {
       date: "2022-10-17T15:54:00",
       image: "/san-pham-dich-vu-4.jpg",
       excerpt:
-        "Răng sứ kim loại là giải pháp phục hình răng với khung sườn kim loại bền chắc và lớp sứ phủ bên ngoài.",
+        "Răng sứ kim loại là giải pháp phục hình răng với khung sườn kim loại bền chắc và lớp sứ phủ bên ngoài. Độ bền cao, chi phí hợp lý, phù hợp cho răng hàm cần sức nhai mạnh.",
       category: "Sản phẩm",
     },
     {
@@ -99,7 +99,7 @@ export default function ProductsServicesPage() {
       date: "2022-10-17T15:59:00",
       image: "/san-pham-dich-vu-5.png",
       excerpt:
-        "Veneer là lớp phủ mỏng bằng sứ hoặc composite, giúp cải thiện thẩm mỹ răng một cách tự nhiên và không xâm lấn.",
+        "Veneer là lớp phủ mỏng bằng sứ hoặc composite, giúp cải thiện thẩm mỹ răng một cách tự nhiên và không xâm lấn. Bảo tồn tối đa răng thật, thời gian thực hiện nhanh, phù hợp cho răng cửa.",
       category: "Dịch vụ",
     },
     {
@@ -108,7 +108,7 @@ export default function ProductsServicesPage() {
       date: "2022-10-17T15:55:00",
       image: "/san-pham-dich-vu-6.jpg",
       excerpt:
-        "Răng sứ Nacere là răng toàn sứ cao cấp của Đức với 16 màu răng, chịu lực 600-1200 Mpa và tính thẩm mỹ cao.",
+        "Răng sứ Nacere là răng toàn sứ cao cấp của DOCERAM GmbH (Đức) với 16 màu răng, chịu lực 600-1200 Mpa. Không lo mảng bám làm vàng ố, xỉn màu. Tương thích sinh học tốt, cách nhiệt hiệu quả.",
       category: "Sản phẩm",
     },
     {
@@ -117,7 +117,7 @@ export default function ProductsServicesPage() {
       date: "2022-10-17T15:59:00",
       image: "/san-pham-dich-vu-7.png",
       excerpt:
-        "Răng sứ Zirconia là loại răng toàn sứ với khả năng chịu lực cực cao, độ bền vượt trội và tính thẩm mỹ tự nhiên.",
+        "Răng sứ Zirconia là loại răng toàn sứ với khả năng chịu lực cực cao (1.200-1.500 MPa), độ bền vượt trội và tính thẩm mỹ tự nhiên. Không chứa kim loại, an toàn với sức khỏe. Tuổi thọ 15-20 năm.",
       category: "Sản phẩm",
     },
   ];
