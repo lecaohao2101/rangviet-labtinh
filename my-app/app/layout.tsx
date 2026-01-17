@@ -17,8 +17,15 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "RangViet LabTinh",
-  description: "Trang web chính thức của RangViet LabTinh",
+  title: "CÔNG TY TNHH RĂNG VIỆT - Lab Tình | Sản Xuất Răng Sứ Cao Cấp",
+  description:
+    "Lab Tình - Công Ty TNHH Răng Việt chuyên sản xuất răng sứ cao cấp. Hơn 5 năm kinh nghiệm, công nghệ hiện đại, đối tác uy tín. Răng sứ EMAX Zirconia, Cercon, Nacere, Zirconia và các dịch vụ nha khoa chuyên nghiệp.",
+  openGraph: {
+    title: "CÔNG TY TNHH RĂNG VIỆT - Lab Tình",
+    description:
+      "Lab Tình - Chuyên sản xuất răng sứ cao cấp với công nghệ hiện đại và đội ngũ chuyên nghiệp. Hơn 5 năm kinh nghiệm trong ngành.",
+    type: "website",
+  },
 };
 
 export default function RootLayout({

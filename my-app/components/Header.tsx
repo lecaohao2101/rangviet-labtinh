@@ -38,19 +38,28 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background shadow-sm transition-colors duration-300">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
+        <div className="flex h-20 items-center justify-between">
           {/* Logo/Brand */}
-          <div className="flex items-center">
+          <div className="flex items-center gap-3">
             <Link href="/" className="flex items-center">
               <Image
                 src="/logo.png"
                 alt="Răng Việt Logo"
-                width={150}
-                height={50}
-                className="h-12 w-auto object-contain"
+                width={200}
+                height={70}
+                className="h-14 w-auto object-contain sm:h-16 lg:h-20"
                 priority
               />
             </Link>
+            {/* Slogan - Hidden on mobile, visible on tablet and up */}
+            <div className="hidden md:flex flex-col justify-center border-l border-border pl-3 ml-3">
+              <p className="text-xs sm:text-sm font-semibold text-primary leading-tight">
+                TINH HOA
+              </p>
+              <p className="text-xs sm:text-sm font-semibold text-primary leading-tight">
+                BÀN TAY VIỆT
+              </p>
+            </div>
           </div>
 
           {/* Desktop Navigation */}

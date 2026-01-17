@@ -60,9 +60,14 @@ export default function Footer() {
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
             }`}
           >
-            <h3 className="text-xl font-bold text-foreground">
-              CÔNG TY TNHH RĂNG VIỆT
-            </h3>
+            <div>
+              <h3 className="text-xl font-bold text-foreground mb-2">
+                CÔNG TY TNHH RĂNG VIỆT
+              </h3>
+              <p className="text-sm font-semibold text-primary italic">
+                Tinh hoa bàn tay Việt
+              </p>
+            </div>
             <div className="space-y-2 text-sm text-foreground-secondary">
               <div className="flex items-start gap-2 group">
                 <svg

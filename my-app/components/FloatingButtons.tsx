@@ -192,7 +192,7 @@ export default function FloatingButtons() {
       <div className="relative" ref={aiRef}>
         {/* AI Chat Interface */}
         {isAIOpen && (
-          <div className="absolute bottom-16 right-0 mb-2 w-80 bg-white dark:bg-background-secondary border border-border rounded-lg shadow-2xl z-[9999] animate-in fade-in slide-in-from-bottom-2 duration-200">
+          <div className="absolute bottom-16 right-0 mb-2 w-80 sm:w-96 bg-white dark:bg-background-secondary border border-border rounded-lg shadow-2xl z-[9999] animate-in fade-in slide-in-from-bottom-2 duration-200 max-w-[calc(100vw-3rem)]">
             <div className="p-4 border-b border-border">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
