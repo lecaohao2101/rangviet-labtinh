@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 /**
  * Trang tin tức với các bài viết về răng sứ
@@ -51,6 +52,7 @@ export default function NewsPage() {
       title: "RĂNG SỨ ĐỨC LÀ GÌ?",
       date: "2022-10-31T12:37:00",
       slug: "rang-su-duc-la-gi",
+      image: "/rang-su-duc.jpg",
       excerpt:
         "Răng sứ Đức thật ra là tên gọi chung các loại răng sứ được sản xuất và cung cấp bởi các công ty răng sứ của Đức. Xuất xứ \"Made in Germany\" luôn có sức ảnh hưởng và tạo được lòng tin vững chắc trong lòng người tiêu dùng trên toàn thế giới.",
       category: "Kiến thức",
@@ -60,8 +62,9 @@ export default function NewsPage() {
       title: "3 DÒNG RĂNG TOÀN SỨ ĐƯỢC ĐÁNH GIÁ TỐT NHẤT HIỆN NAY",
       date: "2022-10-31T12:35:00",
       slug: "3-dong-rang-toan-su-duoc-danh-gia-tot-nhat-hien-nay",
+      image: "/3-dong-rang-toan-su.png",
       excerpt:
-        "Khám phá 3 dòng răng toàn sứ được đánh giá tốt nhất: Zirconia Ceramill Zolid (Đức), Cercon và Cercon HT (Đức), 3M Lava Plus (Mỹ). Tất cả đều có tiêu chuẩn lưu hành quốc tế và thẻ bảo hành IDPI.",
+        "Răng toàn sứ Zirconia Ceramill Zolid (Đức) - cao cấp nhất dòng Zirconia, chịu lực 1566 Mpa. Cercon và Cercon HT (Đức) - được giới diễn viên, ca sĩ lựa chọn. 3M Lava Plus (Mỹ) - chịu lực 1800 Mpa, bảo hành 15 năm. Tất cả đều có thẻ bảo hành IDPI.",
       category: "Sản phẩm",
     },
     {
@@ -69,6 +72,7 @@ export default function NewsPage() {
       title: "RĂNG SỨ NACERA LÀ GÌ? ƯU NHƯỢC ĐIỂM & GIÁ CẢ",
       date: "2022-10-31T12:34:00",
       slug: "rang-su-nacera-la-gi-uu-nhuoc-diem-gia-ca",
+      image: "/rang-su-nacera.jpg",
       excerpt:
         "Răng sứ Nacera là răng toàn sứ cao cấp của DOCERAM GmbH (Đức) với 16 màu răng, chịu lực 600-1200 Mpa. Được chế tác bằng chất liệu Nha khoa cao cấp với tính thẩm mỹ đẹp như răng thật, không lo mảng bám làm vàng ố, xỉn màu.",
       category: "Sản phẩm",
@@ -112,25 +116,17 @@ export default function NewsPage() {
                 transitionDelay: isVisible ? `${index * 100}ms` : "0ms",
               }}
             >
-              {/* Article Image Placeholder */}
-              <div className="relative w-full h-48 bg-gradient-to-br from-primary-lightest to-primary/20 overflow-hidden">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <svg
-                    className="w-24 h-24 text-primary/30"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={1}
-                      d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                    />
-                  </svg>
-                </div>
+              {/* Article Image */}
+              <div className="relative w-full h-48 overflow-hidden bg-background">
+                <Image
+                  src={article.image}
+                  alt={article.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                />
                 {/* Category Badge */}
-                <div className="absolute top-4 left-4">
+                <div className="absolute top-4 left-4 z-10">
                   <span className="bg-primary text-white text-xs font-semibold px-3 py-1 rounded-full">
                     {article.category}
                   </span>

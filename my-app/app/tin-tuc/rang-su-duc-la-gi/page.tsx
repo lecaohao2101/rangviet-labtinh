@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
+import TableOfContents from "@/components/TableOfContents";
 
 /**
  * Trang chi tiết bài viết: RĂNG SỨ ĐỨC LÀ GÌ?
@@ -37,7 +39,10 @@ export default function RangSuDucLaGiPage() {
       ref={sectionRef}
       className="min-h-screen bg-background py-12 px-4 sm:px-6 lg:px-8"
     >
-      <div className="mx-auto max-w-4xl">
+      <div className="mx-auto max-w-7xl">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+          {/* Main Content */}
+          <div className="lg:col-span-3">
         {/* Breadcrumb */}
         <nav
           className={`mb-8 transition-all duration-700 ${
@@ -213,6 +218,23 @@ export default function RangSuDucLaGiPage() {
                     Dịch vụ bảo hành chính hãng của răng lên đến 10 năm
                   </li>
                 </ul>
+                
+                {/* Image 1 */}
+                <figure className="my-6">
+                  <div className="relative w-full min-h-64 sm:min-h-96 rounded-lg overflow-hidden border border-border bg-background flex items-center justify-center">
+                    <Image
+                      src="/rang-su-duc-detail-1.jpg"
+                      alt="Các thông số kỹ thuật của Răng sứ Đức Zirconia DDBio"
+                      width={800}
+                      height={600}
+                      className="object-contain w-full h-auto max-h-[600px]"
+                      sizes="(max-width: 768px) 100vw, 800px"
+                    />
+                  </div>
+                  <figcaption className="mt-3 text-sm text-foreground-secondary italic text-center">
+                    Các thông số kỹ thuật của Răng sứ Đức Zirconia DDBio
+                  </figcaption>
+                </figure>
               </div>
 
               {/* 2.2 */}
@@ -235,6 +257,23 @@ export default function RangSuDucLaGiPage() {
                   So với DDBio HS, DDBio HT có thẩm mỹ và độ trong cao hơn, phù
                   hợp với nhu cầu làm đẹp của nhiều khách hàng.
                 </p>
+                
+                {/* Image 2 */}
+                <figure className="my-6">
+                  <div className="relative w-full min-h-64 sm:min-h-96 rounded-lg overflow-hidden border border-border bg-background flex items-center justify-center">
+                    <Image
+                      src="/rang-su-duc-detail-2.jpg"
+                      alt="Răng sứ Đức DDBio HT"
+                      width={800}
+                      height={600}
+                      className="object-contain w-full h-auto max-h-[600px]"
+                      sizes="(max-width: 768px) 100vw, 800px"
+                    />
+                  </div>
+                  <figcaption className="mt-3 text-sm text-foreground-secondary italic text-center">
+                    Răng sứ Đức DDBio HT
+                  </figcaption>
+                </figure>
               </div>
 
               {/* 2.3 */}
@@ -262,6 +301,23 @@ export default function RangSuDucLaGiPage() {
                   Cercon HT với 16 màu phôi theo hệ thống màu Vita, đáp ứng nhu
                   cầu thẩm mỹ và màu sắc tự nhiên như răng thật.
                 </p>
+                
+                {/* Image 3 */}
+                <figure className="my-6">
+                  <div className="relative w-full min-h-64 sm:min-h-96 rounded-lg overflow-hidden border border-border bg-background flex items-center justify-center">
+                    <Image
+                      src="/rang-su-duc-detail-3.jpg"
+                      alt="Răng sứ Đức Cercon HT"
+                      width={800}
+                      height={600}
+                      className="object-contain w-full h-auto max-h-[600px]"
+                      sizes="(max-width: 768px) 100vw, 800px"
+                    />
+                  </div>
+                  <figcaption className="mt-3 text-sm text-foreground-secondary italic text-center">
+                    Răng sứ Đức Cercon HT
+                  </figcaption>
+                </figure>
               </div>
 
               {/* 2.4 */}
@@ -382,6 +438,13 @@ export default function RangSuDucLaGiPage() {
             </svg>
             Quay lại danh sách tin tức
           </Link>
+        </div>
+          </div>
+
+          {/* Table of Contents Sidebar */}
+          <aside className="lg:col-span-1">
+            <TableOfContents />
+          </aside>
         </div>
       </div>
     </div>

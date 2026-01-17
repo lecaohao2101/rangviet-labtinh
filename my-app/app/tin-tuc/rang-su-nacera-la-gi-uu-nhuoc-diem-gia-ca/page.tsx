@@ -2,6 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
+import TableOfContents from "@/components/TableOfContents";
 
 /**
  * Trang chi tiết bài viết: RĂNG SỨ NACERA LÀ GÌ? ƯU NHƯỢC ĐIỂM & GIÁ CẢ
@@ -37,7 +39,10 @@ export default function RangSuNaceraPage() {
       ref={sectionRef}
       className="min-h-screen bg-background py-12 px-4 sm:px-6 lg:px-8"
     >
-      <div className="mx-auto max-w-4xl">
+      <div className="mx-auto max-w-7xl">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+          {/* Main Content */}
+          <div className="lg:col-span-3">
         {/* Breadcrumb */}
         <nav
           className={`mb-8 transition-all duration-700 ${
@@ -135,6 +140,24 @@ export default function RangSuNaceraPage() {
               <h2 className="text-2xl font-bold text-foreground mb-4">
                 Răng sứ Nacera là gì? Cấu tạo răng sứ Nacera
               </h2>
+              
+              {/* Image 1 */}
+              <figure className="my-6">
+                <div className="relative w-full min-h-64 sm:min-h-96 rounded-lg overflow-hidden border border-border bg-background flex items-center justify-center">
+                  <Image
+                    src="/rang-su-nacera-detail-1.jpg"
+                    alt="Răng sứ Nacera"
+                    width={800}
+                    height={600}
+                    className="object-contain w-full h-auto max-h-[600px]"
+                    sizes="(max-width: 768px) 100vw, 800px"
+                  />
+                </div>
+                <figcaption className="mt-3 text-sm text-foreground-secondary italic text-center">
+                  Răng sứ Nacera
+                </figcaption>
+              </figure>
+              
               <p className="text-foreground-secondary mb-4">
                 Răng sứ Nacera là một loại răng toàn sứ cao cấp của công ty{" "}
                 <strong>DOCERAM GmbH (Đức)</strong>. Răng sứ Nacera được cấu tạo
@@ -168,6 +191,24 @@ export default function RangSuNaceraPage() {
               <h2 className="text-2xl font-bold text-foreground mb-4">
                 5 Ưu điểm nổi bật của răng toàn sứ Nacera
               </h2>
+              
+              {/* Image 2 */}
+              <figure className="my-6">
+                <div className="relative w-full min-h-64 sm:min-h-96 rounded-lg overflow-hidden border border-border bg-background flex items-center justify-center">
+                  <Image
+                    src="/rang-su-nacera-detail-2.jpg"
+                    alt="5 Ưu điểm nổi bật của răng toàn sứ Nacera"
+                    width={800}
+                    height={600}
+                    className="object-contain w-full h-auto max-h-[600px]"
+                    sizes="(max-width: 768px) 100vw, 800px"
+                  />
+                </div>
+                <figcaption className="mt-3 text-sm text-foreground-secondary italic text-center">
+                  5 Ưu điểm nổi bật của răng toàn sứ Nacera
+                </figcaption>
+              </figure>
+              
               <p className="text-foreground-secondary mb-6">
                 Răng sứ Nacera được các chuyên gia răng sứ đánh giá tốt về chất
                 lượng bởi 3 yếu tố: độ chịu lực cao, tính thẩm mỹ tốt và sự lành
@@ -366,6 +407,13 @@ export default function RangSuNaceraPage() {
             </svg>
             Quay lại danh sách tin tức
           </Link>
+        </div>
+          </div>
+
+          {/* Table of Contents Sidebar */}
+          <aside className="lg:col-span-1">
+            <TableOfContents />
+          </aside>
         </div>
       </div>
     </div>

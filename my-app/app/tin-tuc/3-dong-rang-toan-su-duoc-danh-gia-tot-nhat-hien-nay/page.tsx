@@ -2,12 +2,14 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
+import TableOfContents from "@/components/TableOfContents";
 
 /**
  * Trang chi tiết bài viết: 3 DÒNG RĂNG TOÀN SỨ ĐƯỢC ĐÁNH GIÁ TỐT NHẤT HIỆN NAY
  */
 export default function BaDongRangToanSuPage() {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -37,7 +39,10 @@ export default function BaDongRangToanSuPage() {
       ref={sectionRef}
       className="min-h-screen bg-background py-12 px-4 sm:px-6 lg:px-8"
     >
-      <div className="mx-auto max-w-4xl">
+      <div className="mx-auto max-w-7xl">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+          {/* Main Content */}
+          <div className="lg:col-span-3">
         {/* Breadcrumb */}
         <nav
           className={`mb-8 transition-all duration-700 ${
@@ -130,13 +135,24 @@ export default function BaDongRangToanSuPage() {
                 thẩm mỹ của răng toàn sứ này không thua bất kỳ loại răng toàn sứ
                 cao cấp nào khác.
               </p>
-              <p className="text-foreground-secondary mb-4 italic">
-                <em>
+              
+              {/* Image 1 */}
+              <figure className="my-6">
+                <div className="relative w-full aspect-video rounded-lg overflow-hidden border border-border bg-background">
+                  <Image
+                    src="/3-dong-rang-toan-su-detail-1.jpg"
+                    alt="Răng sứ Zirconia Ceramill Zolid"
+                    fill
+                    className="object-contain"
+                    sizes="(max-width: 768px) 100vw, 800px"
+                  />
+                </div>
+                <figcaption className="mt-3 text-sm text-foreground-secondary italic text-center">
                   Zirconia Ceramill Zolid là răng sứ cao cấp nhất trong dòng
                   Zirconia với độ trong tự nhiên rất cao, mang đến sự hoàn mỹ
                   cho hàm răng ở hình thể cũng như màu sắc
-                </em>
-              </p>
+                </figcaption>
+              </figure>
 
               <h3 className="text-xl font-semibold text-foreground mb-3 mt-6">
                 Ưu điểm nổi bật:
@@ -155,14 +171,57 @@ export default function BaDongRangToanSuPage() {
                   nhiên thì Zirconia Ceramill Zolid là sự lựa chọn tốt.
                 </li>
               </ul>
-              <p className="text-foreground-secondary mb-4 italic">
-                <em>
+              
+              {/* Image 2 */}
+              <figure className="my-6">
+                <div className="relative w-full aspect-video rounded-lg overflow-hidden border border-border bg-background">
+                  <Image
+                    src="/3-dong-rang-toan-su-detail-2.jpg"
+                    alt="Răng sứ Zirconia Ceramill Zolid trắng sáng tự nhiên"
+                    fill
+                    className="object-contain"
+                    sizes="(max-width: 768px) 100vw, 800px"
+                  />
+                </div>
+                <figcaption className="mt-3 text-sm text-foreground-secondary italic text-center">
                   Độ trong cao giúp răng sứ Zirconia Ceramill Zolid vừa trắng
                   sáng mà vẫn tự nhiên từ đó giúp hàm răng và nụ cười mang vẻ
                   đẹp cuốn hút và tự nhiên
-                </em>
-              </p>
-
+                </figcaption>
+              </figure>
+              
+              {/* Image 3 */}
+              <figure className="my-6">
+                <div className="relative w-full aspect-video rounded-lg overflow-hidden border border-border bg-background">
+                  <Image
+                    src="/3-dong-rang-toan-su-detail-3.jpg"
+                    alt="Bọc 20 răng sứ Ceramill Zolid"
+                    fill
+                    className="object-contain"
+                    sizes="(max-width: 768px) 100vw, 800px"
+                  />
+                </div>
+                <figcaption className="mt-3 text-sm text-foreground-secondary italic text-center">
+                  Bọc 20 răng sứ Ceramill Zolid với màu OM1 theo bảng màu Vita, bảo hành IDPI 10 năm
+                </figcaption>
+              </figure>
+              
+              {/* Image 4 */}
+              <figure className="my-6">
+                <div className="relative w-full aspect-video rounded-lg overflow-hidden border border-border bg-background">
+                  <Image
+                    src="/3-dong-rang-toan-su-detail-4.jpg"
+                    alt="Bọc 4 răng Zirconia Zolid"
+                    fill
+                    className="object-contain"
+                    sizes="(max-width: 768px) 100vw, 800px"
+                  />
+                </div>
+                <figcaption className="mt-3 text-sm text-foreground-secondary italic text-center">
+                  Bọc 4 răng Zirconia Zolid với màu 1M2 theo bảng màu Vita – tương đương màu răng thật
+                </figcaption>
+              </figure>
+       
               <div className="bg-primary-lightest border-l-4 border-primary p-4 my-6">
                 <p className="text-foreground font-semibold mb-2">
                   Giá răng sứ Zirconia Ceramill Zolid CHÍNH HÃNG bao nhiêu thì
@@ -187,13 +246,24 @@ export default function BaDongRangToanSuPage() {
                 lựa chọn nhiều nhất, đặc biệt 2 loại sứ này luôn được giới diễn
                 viên, ca sĩ, doanh nhân… lựa chọn.
               </p>
-              <p className="text-foreground-secondary mb-4 italic">
-                <em>
+              
+              {/* Image 5 */}
+              <figure className="my-6">
+                <div className="relative w-full aspect-video rounded-lg overflow-hidden border border-border bg-background">
+                  <Image
+                    src="/3-dong-rang-toan-su-detail-5.jpg"
+                    alt="Răng toàn sứ Cercon và Cercon HT"
+                    fill
+                    className="object-contain"
+                    sizes="(max-width: 768px) 100vw, 800px"
+                  />
+                </div>
+                <figcaption className="mt-3 text-sm text-foreground-secondary italic text-center">
                   Răng toàn sứ Cercon và Cercont HT là sự lựa chọn cho người đòi
                   hỏi sự hoàn mỹ
-                </em>
-              </p>
-
+                </figcaption>
+              </figure>
+                  
               <h3 className="text-xl font-semibold text-foreground mb-3 mt-6">
                 Đặc tính thẩm mỹ của răng toàn sứ Cercon và Cercon HT:
               </h3>
@@ -201,12 +271,12 @@ export default function BaDongRangToanSuPage() {
                 Bác sĩ Đinh Trường Hùng (Peace Dentistry) – một chuyên gia về
                 thẩm mỹ răng sứ với 20 năm kinh nghiệm chia sẻ:{" "}
                 <em>
-                  "Đặc tính vượt trội nhất của Răng sứ Cercon và Cercon HT chính
+                  &ldquo;Đặc tính vượt trội nhất của Răng sứ Cercon và Cercon HT chính
                   là tính thẩm mỹ với màu sắc{" "}
                   <strong>trắng sáng và độ trong tự nhiên hoàn hảo</strong>. Đây
                   chính là đặc điểm làm cho những người có xu hướng hoàn mỹ yêu
                   thích Cercon và Cercon HT. Trong đó, răng sứ Cercon HT có độ
-                  trong cao hơn răng sứ Cercon".
+                  trong cao hơn răng sứ Cercon&rdquo;.
                 </em>
               </p>
 
@@ -218,6 +288,54 @@ export default function BaDongRangToanSuPage() {
                 do đó, góp phần giúp sức nhai khỏe và rất khó bị gãy, mẻ hoặc
                 vỡ do ăn nhai.
               </p>
+              
+              {/* Image 6 */}
+              <figure className="my-6">
+                <div className="relative w-full aspect-video rounded-lg overflow-hidden border border-border bg-background">
+                  <Image
+                    src="/3-dong-rang-toan-su-detail-6.jpg"
+                    alt="Bọc răng sứ Cercon"
+                    fill
+                    className="object-contain"
+                    sizes="(max-width: 768px) 100vw, 800px"
+                  />
+                </div>
+                <figcaption className="mt-3 text-sm text-foreground-secondary italic text-center">
+                  Bọc răng sứ Cercon cho răng tối màu từ bên trong, bảo hành IDPI 10 năm
+                </figcaption>
+              </figure>
+              
+              {/* Image 7 */}
+              <figure className="my-6">
+                <div className="relative w-full aspect-video rounded-lg overflow-hidden border border-border bg-background">
+                  <Image
+                    src="/3-dong-rang-toan-su-detail-7.png"
+                    alt="Bọc 4 răng sứ Cercon"
+                    fill
+                    className="object-contain"
+                    sizes="(max-width: 768px) 100vw, 800px"
+                  />
+                </div>
+                <figcaption className="mt-3 text-sm text-foreground-secondary italic text-center">
+                  Bọc 4 răng sứ Cercon cho răng thưa và nhỏ, bảo hành IDPI 10 năm
+                </figcaption>
+              </figure>
+              
+              {/* Image 8 */}
+              <figure className="my-6">
+                <div className="relative w-full aspect-video rounded-lg overflow-hidden border border-border bg-background">
+                  <Image
+                    src="/3-dong-rang-toan-su-detail-8.jpg"
+                    alt="Thẩm mỹ răng nguyên hàm với răng sứ Cercon HT"
+                    fill
+                    className="object-contain"
+                    sizes="(max-width: 768px) 100vw, 800px"
+                  />
+                </div>
+                <figcaption className="mt-3 text-sm text-foreground-secondary italic text-center">
+                  Thẩm mỹ răng nguyên hàm với răng sứ Cercon HT
+                </figcaption>
+              </figure>
 
               <div className="bg-primary-lightest border-l-4 border-primary p-4 my-6">
                 <p className="text-foreground font-semibold mb-2">
@@ -251,6 +369,38 @@ export default function BaDongRangToanSuPage() {
                 <strong>6.000.000 VNĐ – 8.000.000 VNĐ</strong> tùy thời điểm và
                 tùy nha khoa.
               </p>
+              
+              {/* Image 9 */}
+              <figure className="my-6">
+                <div className="relative w-full aspect-video rounded-lg overflow-hidden border border-border bg-background">
+                  <Image
+                    src="/3-dong-rang-toan-su-detail-9.jpg"
+                    alt="Bọc răng sứ nguyên hàm 3M Lava Plus"
+                    fill
+                    className="object-contain"
+                    sizes="(max-width: 768px) 100vw, 800px"
+                  />
+                </div>
+                <figcaption className="mt-3 text-sm text-foreground-secondary italic text-center">
+                  Một ca bọc răng sứ nguyên hàm – 18 răng sứ 3M Lava Plus tại Peace Dentistry
+                </figcaption>
+              </figure>
+              
+              {/* Image 10 */}
+              <figure className="my-6">
+                <div className="relative w-full aspect-video rounded-lg overflow-hidden border border-border bg-background">
+                  <Image
+                    src="/3-dong-rang-toan-su-detail-10.jpg"
+                    alt="Thẩm mỹ răng nguyên hàm với răng toàn sứ Lava"
+                    fill
+                    className="object-contain"
+                    sizes="(max-width: 768px) 100vw, 800px"
+                  />
+                </div>
+                <figcaption className="mt-3 text-sm text-foreground-secondary italic text-center">
+                  Thẩm mỹ răng nguyên hàm với răng toàn sứ Lava, bảo hành IDPI 15 năm
+                </figcaption>
+              </figure>
             </section>
 
             {/* Summary */}
@@ -281,12 +431,23 @@ export default function BaDongRangToanSuPage() {
                 sứ không chính hãng, răng sứ nhái thương hiệu không thể làm như
                 vậy được.
               </p>
-              <p className="text-foreground-secondary mb-4 italic">
-                <em>
-                  Thẻ bảo hành và xác thực IDPI mà Peace Dentistry cung cấp cho
-                  khách hàng sau khi làm răng sứ
-                </em>
-              </p>
+              
+              {/* Image 11 */}
+              <figure className="my-6">
+                <div className="relative w-full aspect-video rounded-lg overflow-hidden border border-border bg-background">
+                  <Image
+                    src="/3-dong-rang-toan-su-detail-11.jpg"
+                    alt="Thẻ bảo hành và xác thực IDPI"
+                    fill
+                    className="object-contain"
+                    sizes="(max-width: 768px) 100vw, 800px"
+                  />
+                </div>
+                <figcaption className="mt-3 text-sm text-foreground-secondary italic text-center">
+                  Thẻ bảo hành và xác thực IDPI mà <u>Peace Dentistry</u> cung cấp cho khách hàng sau khi làm răng sứ
+                </figcaption>
+              </figure>
+ 
             </section>
           </div>
         </article>
@@ -351,6 +512,13 @@ export default function BaDongRangToanSuPage() {
             </svg>
             Quay lại danh sách tin tức
           </Link>
+        </div>
+          </div>
+
+          {/* Table of Contents Sidebar */}
+          <aside className="lg:col-span-1">
+            <TableOfContents />
+          </aside>
         </div>
       </div>
     </div>
