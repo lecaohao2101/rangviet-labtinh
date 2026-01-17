@@ -278,7 +278,7 @@ export default function HomePage() {
               </p>
               <Link
                 href="/gioi-thieu"
-                className="inline-block bg-primary text-white px-8 py-3 rounded-lg font-semibold hover:bg-primary-dark transition-colors duration-300"
+                className="no-hover inline-block bg-primary text-white px-8 py-3 rounded-lg font-semibold hover:bg-primary-dark hover:text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:-translate-y-1 active:scale-100 active:translate-y-0"
               >
                 Xem thêm
               </Link>
@@ -528,7 +528,7 @@ export default function HomePage() {
                     src={clinic.image}
                     alt={clinic.name}
                     fill
-                    className="object-contain grayscale group-hover:grayscale-0 transition-all duration-300"
+                    className="object-contain grayscale md:grayscale group-hover:grayscale-0 transition-all duration-300"
                     sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 16vw"
                   />
                 </div>
@@ -673,7 +673,7 @@ export default function HomePage() {
                 }}
               >
                 <div className="relative w-full aspect-video overflow-hidden">
-                  <Image
+        <Image
                     src={news.image}
                     alt={news.title}
                     fill

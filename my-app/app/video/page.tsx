@@ -5,13 +5,10 @@ import { useEffect, useRef, useState } from "react";
 /**
  * Trang Video với các video YouTube về quy trình sản xuất răng sứ
  * Grid layout responsive với hiệu ứng đẹp
- * Tối ưu UX: Hiển thị thumbnail, chỉ load video khi click
+ * Hiển thị video trực tiếp bằng iframe embed
  */
 export default function VideoPage() {
   const [isVisible, setIsVisible] = useState(false);
-  const [playingVideo, setPlayingVideo] = useState<number | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalVideo, setModalVideo] = useState<{ id: number; url: string; title: string } | null>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -45,25 +42,6 @@ export default function VideoPage() {
     };
   }, []);
 
-  // Handle ESC key to close modal
-  useEffect(() => {
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && isModalOpen) {
-        closeModal();
-      }
-    };
-
-    if (isModalOpen) {
-      document.addEventListener("keydown", handleEscape);
-      document.body.style.overflow = "hidden"; // Prevent background scroll
-    }
-
-    return () => {
-      document.removeEventListener("keydown", handleEscape);
-      document.body.style.overflow = "unset";
-    };
-  }, [isModalOpen]);
-
   // Helper function to extract YouTube video ID
   const getYouTubeVideoId = (url: string): string | null => {
     const regExp =
@@ -79,36 +57,6 @@ export default function VideoPage() {
     return `https://www.youtube.com/embed/${videoId}?autoplay=${autoplay ? 1 : 0}&rel=0&modestbranding=1&showinfo=0`;
   };
 
-  // Get YouTube thumbnail URL
-  const getYouTubeThumbnail = (url: string, quality: 'default' | 'hq' | 'mq' | 'sd' | 'maxres' = 'maxres'): string => {
-    const videoId = getYouTubeVideoId(url);
-    if (!videoId) return '';
-    
-    const qualityMap = {
-      default: 'default',
-      hq: 'hqdefault',
-      mq: 'mqdefault',
-      sd: 'sddefault',
-      maxres: 'maxresdefault'
-    };
-    
-    return `https://img.youtube.com/vi/${videoId}/${qualityMap[quality]}.jpg`;
-  };
-
-  const handlePlayVideo = (videoId: number, url: string, title: string) => {
-    setPlayingVideo(videoId);
-    setModalVideo({ id: videoId, url, title });
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-    setModalVideo(null);
-    // Reset playing video after a delay to allow modal to close
-    setTimeout(() => {
-      setPlayingVideo(null);
-    }, 300);
-  };
 
   const videos = [
     {
@@ -174,40 +122,16 @@ export default function VideoPage() {
                 transitionDelay: isVisible ? `${index * 100}ms` : "0ms",
               }}
             >
-              {/* Video Container with Thumbnail */}
-              <div className="relative w-full aspect-video bg-background group cursor-pointer overflow-hidden">
-                {/* Thumbnail Image */}
-                <img
-                  src={getYouTubeThumbnail(video.url)}
-                  alt={video.title}
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                  loading="lazy"
+              {/* Video Container with Direct Embed */}
+              <div className="relative w-full aspect-video bg-background overflow-hidden rounded-t-lg border-b border-border">
+                {/* YouTube Video Embed */}
+                <iframe
+                  src={getYouTubeEmbedUrl(video.url, false)}
+                  title={video.title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  className="w-full h-full"
                 />
-                
-                {/* Dark Overlay */}
-                <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors duration-300" />
-                
-                {/* Play Button Overlay */}
-                <button
-                  onClick={() => handlePlayVideo(video.id, video.url, video.title)}
-                  className="absolute inset-0 flex items-center justify-center group/play"
-                  aria-label={`Phát video ${video.title}`}
-                >
-                  <div className="w-20 h-20 bg-primary/90 rounded-full flex items-center justify-center transform group-hover/play:scale-110 transition-all duration-300 shadow-lg group-hover/play:shadow-xl">
-                    <svg
-                      className="w-10 h-10 text-white ml-1"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path d="M8 5v14l11-7z" />
-                    </svg>
-                  </div>
-                </button>
-
-                {/* Duration Badge (Optional - có thể thêm nếu cần) */}
-                <div className="absolute bottom-3 right-3 bg-black/70 text-white text-xs px-2 py-1 rounded">
-                  Video
-                </div>
               </div>
 
               {/* Video Info */}
@@ -222,53 +146,6 @@ export default function VideoPage() {
             </div>
           ))}
         </div>
-
-        {/* Video Modal */}
-        {isModalOpen && modalVideo && (
-          <div
-            className={`fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 transition-opacity duration-300 ${
-              isModalOpen ? "opacity-100" : "opacity-0"
-            }`}
-            onClick={closeModal}
-          >
-            <div
-              className={`relative w-full max-w-5xl aspect-video bg-black rounded-lg overflow-hidden shadow-2xl transition-all duration-300 ${
-                isModalOpen ? "scale-100 opacity-100" : "scale-95 opacity-0"
-              }`}
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* Close Button */}
-              <button
-                onClick={closeModal}
-                className="absolute top-4 right-4 z-10 w-10 h-10 bg-black/70 hover:bg-black/90 text-white rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
-                aria-label="Đóng video"
-              >
-                <svg
-                  className="w-6 h-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              </button>
-
-              {/* Video Iframe */}
-              <iframe
-                src={getYouTubeEmbedUrl(modalVideo.url, true)}
-                title={modalVideo.title}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-                className="w-full h-full"
-              />
-            </div>
-          </div>
-        )}
 
         {/* Additional Info Section */}
         <div

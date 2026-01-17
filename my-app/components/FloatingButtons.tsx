@@ -70,7 +70,7 @@ export default function FloatingButtons() {
                target="_blank"
                rel="noopener noreferrer"
                onClick={handleLinkClick}
-               className="flex items-center justify-center gap-3 bg-white dark:bg-background-secondary border border-border rounded-full w-14 h-14 shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-110 group"
+               className="flex items-center justify-center gap-3 bg-white dark:bg-background-secondary border border-border rounded-full w-14 h-14 shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-110 group no-hover"
                title="Messenger"
              >
                <Image
@@ -88,7 +88,7 @@ export default function FloatingButtons() {
                target="_blank"
                rel="noopener noreferrer"
                onClick={handleLinkClick}
-               className="flex items-center justify-center gap-3 bg-white dark:bg-background-secondary border border-border rounded-full w-14 h-14 shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-110 group"
+               className="flex items-center justify-center gap-3 bg-white dark:bg-background-secondary border border-border rounded-full w-14 h-14 shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-110 group no-hover"
                title="Zalo"
              >
                <Image
@@ -104,7 +104,7 @@ export default function FloatingButtons() {
             <a
               href="tel:0932379567"
               onClick={handleLinkClick}
-              className="flex items-center justify-center gap-3 bg-white dark:bg-background-secondary border border-border rounded-full w-14 h-14 shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-110 group"
+              className="flex items-center justify-center gap-3 bg-white dark:bg-background-secondary border border-border rounded-full w-14 h-14 shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-110 group no-hover"
               title="Gọi điện"
             >
               <svg
@@ -126,7 +126,7 @@ export default function FloatingButtons() {
             <Link
               href="/lien-he"
               onClick={handleLinkClick}
-              className="flex items-center justify-center gap-3 bg-white dark:bg-background-secondary border border-border rounded-full w-14 h-14 shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-110 group"
+              className="flex items-center justify-center gap-3 bg-white dark:bg-background-secondary border border-border rounded-full w-14 h-14 shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-110 group no-hover"
               title="Liên hệ"
             >
               <svg

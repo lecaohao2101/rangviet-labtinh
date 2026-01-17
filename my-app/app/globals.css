@@ -214,7 +214,7 @@ button:not(:disabled):active {
 }
 
 /* Improved link hover effects */
-a:not([class*="no-hover"]):not(button a) {
+a:not([class*="no-hover"]):not(button a):not([class*="fixed"]):not([class*="absolute"]) {
   position: relative;
   transition: color 0.2s ease;
   display: inline-block;
@@ -438,6 +438,25 @@ select:focus:not(:focus-visible) {
 
 .animate-glow {
   animation: glow 2s ease-in-out infinite;
+}
+
+/* Mobile-friendly: Hiển thị màu logo nha khoa trên mobile/touch devices */
+/* Trên mobile: luôn hiển thị màu (không grayscale) */
+@media (hover: none) and (pointer: coarse) {
+  .grayscale {
+    filter: grayscale(0) !important;
+  }
+}
+
+/* Desktop: Chỉ áp dụng grayscale khi có thể hover */
+@media (hover: hover) {
+  .grayscale {
+    filter: grayscale(100%);
+  }
+  
+  .group:hover .grayscale {
+    filter: grayscale(0);
+  }
 }
 
 .animate-sparkle {

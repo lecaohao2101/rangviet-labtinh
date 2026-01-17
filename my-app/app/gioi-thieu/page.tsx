@@ -19,29 +19,12 @@ const getYouTubeEmbedUrl = (url: string, autoplay: boolean = false): string => {
   return `https://www.youtube.com/embed/${videoId}?autoplay=${autoplay ? 1 : 0}&rel=0&modestbranding=1&showinfo=0`;
 };
 
-// Get YouTube thumbnail URL
-const getYouTubeThumbnail = (url: string, quality: 'default' | 'hq' | 'mq' | 'sd' | 'maxres' = 'maxres'): string => {
-  const videoId = getYouTubeVideoId(url);
-  if (!videoId) return '';
-  
-  const qualityMap = {
-    default: 'default',
-    hq: 'hqdefault',
-    mq: 'mqdefault',
-    sd: 'sddefault',
-    maxres: 'maxresdefault'
-  };
-  
-  return `https://img.youtube.com/vi/${videoId}/${qualityMap[quality]}.jpg`;
-};
 
 /**
  * Trang Giới Thiệu - Công Ty TNHH Răng Việt
  */
 export default function GioiThieuPage() {
   const [isVisible, setIsVisible] = useState(true);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [modalVideo, setModalVideo] = useState<{ url: string; title: string } | null>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -65,35 +48,6 @@ export default function GioiThieuPage() {
       }
     };
   }, []);
-
-  // Handle ESC key to close modal
-  useEffect(() => {
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === "Escape" && isModalOpen) {
-        closeModal();
-      }
-    };
-
-    if (isModalOpen) {
-      document.addEventListener("keydown", handleEscape);
-      document.body.style.overflow = "hidden"; // Prevent background scroll
-    }
-
-    return () => {
-      document.removeEventListener("keydown", handleEscape);
-      document.body.style.overflow = "unset";
-    };
-  }, [isModalOpen]);
-
-  const handlePlayVideo = (url: string, title: string) => {
-    setModalVideo({ url, title });
-    setIsModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsModalOpen(false);
-    setModalVideo(null);
-  };
 
   return (
     <div
@@ -129,12 +83,12 @@ export default function GioiThieuPage() {
               : "opacity-0 translate-y-8"
           }`}
         >
-          <figure className="relative w-full h-64 sm:h-80 md:h-96 rounded-lg overflow-hidden border border-border">
+          <figure className="relative w-full min-h-[200px] sm:min-h-[300px] md:min-h-[400px] rounded-lg overflow-hidden border border-border">
             <Image
               src="/thumnail-trangchu.png"
               alt="Công Ty TNHH Răng Việt - Lab Tình"
               fill
-              className="object-cover"
+              className="object-contain"
               priority
               sizes="100vw"
             />
@@ -194,31 +148,31 @@ export default function GioiThieuPage() {
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-              <figure className="relative w-full aspect-video rounded-lg overflow-hidden border border-border">
+              <figure className="relative w-full min-h-[200px] sm:min-h-[250px] rounded-lg overflow-hidden border border-border bg-background">
                 <Image
                   src="/gioi-thieu-1.jpg"
                   alt="Lab Tình - Công Ty TNHH Răng Việt"
                   fill
-                  className="object-cover"
+                  className="object-contain"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </figure>
-              <figure className="relative w-full aspect-video rounded-lg overflow-hidden border border-border">
+              <figure className="relative w-full min-h-[200px] sm:min-h-[250px] rounded-lg overflow-hidden border border-border bg-background">
                 <Image
                   src="/gioi-thieu-2.jpg"
                   alt="Lễ bàn giao máy cắt IMES - ICORE 1501"
                   fill
-                  className="object-cover"
+                  className="object-contain"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </figure>
             </div>
-            <figure className="relative w-full aspect-video rounded-lg overflow-hidden border border-border mt-6">
+            <figure className="relative w-full min-h-[200px] sm:min-h-[300px] rounded-lg overflow-hidden border border-border mt-6 bg-background">
               <Image
                 src="/gioi-thieu-3.png"
                 alt="Đội ngũ Lab Tình tại lễ bàn giao máy"
                 fill
-                className="object-cover"
+                className="object-contain"
                 sizes="(max-width: 768px) 100vw, 100vw"
               />
             </figure>
@@ -336,50 +290,50 @@ export default function GioiThieuPage() {
                 Hệ thống máy móc hiện đại
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <figure className="relative w-full aspect-video rounded-lg overflow-hidden border border-border">
+                <figure className="relative w-full min-h-[200px] sm:min-h-[250px] rounded-lg overflow-hidden border border-border bg-background">
                   <Image
                     src="/gioi-thieu-4.jpg"
                     alt="Máy cắt IMES - ICORE 1501 tại Lab Tình"
                     fill
-                    className="object-cover"
+                    className="object-contain"
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
                 </figure>
-                <figure className="relative w-full aspect-video rounded-lg overflow-hidden border border-border">
+                <figure className="relative w-full min-h-[200px] sm:min-h-[250px] rounded-lg overflow-hidden border border-border bg-background">
                   <Image
                     src="/gioi-thieu-5.png"
                     alt="Máy cắt CAD/CAM tại Lab Tình"
                     fill
-                    className="object-cover"
+                    className="object-contain"
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
                 </figure>
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
-                <figure className="relative w-full aspect-video rounded-lg overflow-hidden border border-border">
+                <figure className="relative w-full min-h-[180px] sm:min-h-[220px] rounded-lg overflow-hidden border border-border bg-background">
                   <Image
                     src="/gioi-thieu-6.png"
                     alt="Máy mài CAD/CAM DEPRAG IDE Mill W52"
                     fill
-                    className="object-cover"
+                    className="object-contain"
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
                 </figure>
-                <figure className="relative w-full aspect-video rounded-lg overflow-hidden border border-border">
+                <figure className="relative w-full min-h-[180px] sm:min-h-[220px] rounded-lg overflow-hidden border border-border bg-background">
                   <Image
                     src="/gioi-thieu-7.png"
                     alt="Lò nung sứ tại Lab Tình"
                     fill
-                    className="object-cover"
+                    className="object-contain"
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
                 </figure>
-                <figure className="relative w-full aspect-video rounded-lg overflow-hidden border border-border">
+                <figure className="relative w-full min-h-[180px] sm:min-h-[220px] rounded-lg overflow-hidden border border-border bg-background">
                   <Image
                     src="/gioi-thieu-8.jpg"
                     alt="Hệ thống lò nung Programat P310 Ivoclar Vivadent"
                     fill
-                    className="object-cover"
+                    className="object-contain"
                     sizes="(max-width: 768px) 100vw, 33vw"
                   />
                 </figure>
@@ -392,21 +346,21 @@ export default function GioiThieuPage() {
                 Quy trình sản xuất
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <figure className="relative w-full aspect-video rounded-lg overflow-hidden border border-border">
+                <figure className="relative w-full min-h-[200px] sm:min-h-[250px] rounded-lg overflow-hidden border border-border bg-background">
                   <Image
                     src="/gioi-thieu-9.jpg"
                     alt="Hệ thống CAD/CAM và máy scan 3Shape"
                     fill
-                    className="object-cover"
+                    className="object-contain"
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
                 </figure>
-                <figure className="relative w-full aspect-video rounded-lg overflow-hidden border border-border">
+                <figure className="relative w-full min-h-[200px] sm:min-h-[250px] rounded-lg overflow-hidden border border-border bg-background">
                   <Image
                     src="/gioi-thieu-10.jpg"
                     alt="Quy trình thiết kế và sản xuất răng sứ"
                     fill
-                    className="object-cover"
+                    className="object-contain"
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
                 </figure>
@@ -419,31 +373,31 @@ export default function GioiThieuPage() {
                 Đội ngũ kỹ thuật viên chuyên nghiệp
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <figure className="relative w-full aspect-video rounded-lg overflow-hidden border border-border">
+                <figure className="relative w-full min-h-[200px] sm:min-h-[250px] rounded-lg overflow-hidden border border-border bg-background">
                   <Image
                     src="/gioi-thieu-11.jpg"
                     alt="Đội ngũ kỹ thuật viên Lab Tình"
                     fill
-                    className="object-cover"
+                    className="object-contain"
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
                 </figure>
-                <figure className="relative w-full aspect-video rounded-lg overflow-hidden border border-border">
+                <figure className="relative w-full min-h-[200px] sm:min-h-[250px] rounded-lg overflow-hidden border border-border bg-background">
                   <Image
                     src="/gioi-thieu-12.jpg"
                     alt="Kỹ thuật viên đang làm việc tại Lab Tình"
                     fill
-                    className="object-cover"
+                    className="object-contain"
                     sizes="(max-width: 768px) 100vw, 50vw"
                   />
                 </figure>
               </div>
-              <figure className="relative w-full aspect-video rounded-lg overflow-hidden border border-border mt-6">
+              <figure className="relative w-full min-h-[200px] sm:min-h-[300px] rounded-lg overflow-hidden border border-border mt-6 bg-background">
                 <Image
                   src="/gioi-thieu-13.jpg"
                   alt="Không gian làm việc chuyên nghiệp tại Lab Tình"
                   fill
-                  className="object-cover"
+                  className="object-contain"
                   sizes="(max-width: 768px) 100vw, 100vw"
                 />
               </figure>
@@ -461,124 +415,56 @@ export default function GioiThieuPage() {
             <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">
               Video Giới Thiệu
             </h2>
-            <div className="relative w-full aspect-video bg-background group cursor-pointer overflow-hidden rounded-lg border border-border">
-              {/* Thumbnail Image */}
-              <img
-                src={getYouTubeThumbnail("https://www.youtube.com/watch?v=LaMiZq7Z3TE")}
-                alt="Video giới thiệu Công Ty TNHH Răng Việt"
-                className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                loading="lazy"
+            <div className="relative w-full aspect-video bg-background overflow-hidden rounded-lg border border-border">
+              {/* YouTube Video Embed */}
+              <iframe
+                src={getYouTubeEmbedUrl("https://www.youtube.com/watch?v=LaMiZq7Z3TE", false)}
+                title="Video giới thiệu Công Ty TNHH Răng Việt"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                className="w-full h-full"
               />
-              
-              {/* Dark Overlay */}
-              <div className="absolute inset-0 bg-black/30 group-hover:bg-black/40 transition-colors duration-300" />
-              
-              {/* Play Button Overlay */}
-              <button
-                onClick={() => handlePlayVideo("https://www.youtube.com/watch?v=LaMiZq7Z3TE", "Video giới thiệu Công Ty TNHH Răng Việt")}
-                className="absolute inset-0 flex items-center justify-center group/play"
-                aria-label="Phát video giới thiệu"
-              >
-                <div className="w-20 h-20 bg-primary/90 rounded-full flex items-center justify-center transform group-hover/play:scale-110 transition-all duration-300 shadow-lg group-hover/play:shadow-xl">
-                  <svg
-                    className="w-10 h-10 text-white ml-1"
-                    fill="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                </div>
-              </button>
-
-              {/* Video Badge */}
-              <div className="absolute bottom-3 right-3 bg-black/70 text-white text-xs px-2 py-1 rounded">
-                Video
-              </div>
             </div>
           </section>
 
-          {/* Video Modal */}
-          {isModalOpen && modalVideo && (
-            <div
-              className={`fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 transition-opacity duration-300 ${
-                isModalOpen ? "opacity-100" : "opacity-0"
+          {/* Section 6 & 7: Cam kết và Tầm nhìn - Grid Layout */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Section 6: Cam kết */}
+            <section
+              className={`bg-background-secondary border border-border rounded-lg p-6 sm:p-8 transition-all duration-700 delay-700 h-full flex flex-col ${
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
               }`}
-              onClick={closeModal}
             >
-              <div
-                className={`relative w-full max-w-5xl aspect-video bg-black rounded-lg overflow-hidden shadow-2xl transition-all duration-300 ${
-                  isModalOpen ? "scale-100 opacity-100" : "scale-95 opacity-0"
-                }`}
-                onClick={(e) => e.stopPropagation()}
-              >
-                {/* Close Button */}
-                <button
-                  onClick={closeModal}
-                  className="absolute top-4 right-4 z-10 w-10 h-10 bg-black/70 hover:bg-black/90 text-white rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110"
-                  aria-label="Đóng video"
-                >
-                  <svg
-                    className="w-6 h-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
-                </button>
-
-                {/* Video Iframe */}
-                <iframe
-                  src={getYouTubeEmbedUrl(modalVideo.url, true)}
-                  title={modalVideo.title}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  allowFullScreen
-                  className="w-full h-full"
-                />
+              <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">
+                Cam Kết Của Chúng Tôi
+              </h2>
+              <div className="space-y-4 text-foreground-secondary flex-grow">
+                <p className="text-lg leading-relaxed">
+                  Công ty TNHH Răng Việt cam kết mang đến cho khách hàng những sản phẩm và dịch vụ tốt nhất. Chúng tôi luôn lắng nghe và đáp ứng nhu cầu của khách hàng, từ đó xây dựng mối quan hệ bền vững và đáng tin cậy.
+                </p>
               </div>
-            </div>
-          )}
+            </section>
 
-          {/* Section 6: Cam kết */}
-          <section
-            className={`bg-background-secondary border border-border rounded-lg p-6 sm:p-8 transition-all duration-700 delay-700 ${
-              isVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8"
-            }`}
-          >
-            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">
-              Cam Kết Của Chúng Tôi
-            </h2>
-            <div className="space-y-4 text-foreground-secondary">
-              <p className="text-lg leading-relaxed">
-                Công ty TNHH Răng Việt cam kết mang đến cho khách hàng những sản phẩm và dịch vụ tốt nhất. Chúng tôi luôn lắng nghe và đáp ứng nhu cầu của khách hàng, từ đó xây dựng mối quan hệ bền vững và đáng tin cậy.
-              </p>
-            </div>
-          </section>
-
-          {/* Section 7: Tầm nhìn */}
-          <section
-            className={`bg-background-secondary border border-border rounded-lg p-6 sm:p-8 transition-all duration-700 delay-800 ${
-              isVisible
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8"
-            }`}
-          >
-            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">
-              Tầm Nhìn
-            </h2>
-            <div className="space-y-4 text-foreground-secondary">
-              <p className="text-lg leading-relaxed">
-                Với tầm nhìn trở thành thương hiệu hàng đầu trong ngành răng sứ tại Việt Nam, Công ty TNHH Răng Việt không ngừng nỗ lực để mang đến sản phẩm và dịch vụ hoàn hảo nhất. Hãy đến với chúng tôi để trải nghiệm sự khác biệt!
-              </p>
-            </div>
-          </section>
+            {/* Section 7: Tầm nhìn */}
+            <section
+              className={`bg-background-secondary border border-border rounded-lg p-6 sm:p-8 transition-all duration-700 delay-800 h-full flex flex-col ${
+                isVisible
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-8"
+              }`}
+            >
+              <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-6">
+                Tầm Nhìn
+              </h2>
+              <div className="space-y-4 text-foreground-secondary flex-grow">
+                <p className="text-lg leading-relaxed">
+                  Với tầm nhìn trở thành thương hiệu hàng đầu trong ngành răng sứ tại Việt Nam, Công ty TNHH Răng Việt không ngừng nỗ lực để mang đến sản phẩm và dịch vụ hoàn hảo nhất. Hãy đến với chúng tôi để trải nghiệm sự khác biệt!
+                </p>
+              </div>
+            </section>
+          </div>
 
           {/* CTA Section */}
           <section
