@@ -60,7 +60,40 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   }, [theme, mounted]);
 
   const toggleTheme = () => {
-    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+    // Thêm fade overlay để tạo smooth transition
+    const root = document.documentElement;
+    const overlay = document.createElement("div");
+    overlay.style.cssText = `
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--background);
+      z-index: 9999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease-in-out;
+    `;
+    document.body.appendChild(overlay);
+
+    // Trigger fade in
+    requestAnimationFrame(() => {
+      overlay.style.opacity = "1";
+      
+      // Đợi fade in hoàn tất rồi mới toggle theme
+      setTimeout(() => {
+        setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+        
+        // Fade out sau khi theme đã thay đổi
+        setTimeout(() => {
+          overlay.style.opacity = "0";
+          setTimeout(() => {
+            document.body.removeChild(overlay);
+          }, 200);
+        }, 100);
+      }, 150);
+    });
   };
 
   // Luôn render Provider để tránh lỗi "useTheme must be used within a ThemeProvider"

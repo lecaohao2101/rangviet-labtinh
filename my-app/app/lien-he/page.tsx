@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import Toast from "@/components/Toast";
 
 /**
  * Trang liên hệ với form gửi tin nhắn, thông tin công ty và bản đồ
@@ -21,6 +22,11 @@ export default function ContactPage() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"success" | "error" | null>(null);
+  const [toast, setToast] = useState<{ message: string; type: "success" | "error" | "info" | "warning"; isVisible: boolean }>({
+    message: "",
+    type: "info",
+    isVisible: false,
+  });
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -214,6 +220,12 @@ export default function ContactPage() {
       await new Promise((resolve) => setTimeout(resolve, 1500));
       
       setSubmitStatus("success");
+      setToast({
+        message: "Cảm ơn bạn đã liên hệ! Chúng tôi sẽ phản hồi sớm nhất có thể.",
+        type: "success",
+        isVisible: true,
+      });
+      
       setFormData({
         name: "",
         phone: "",
@@ -233,15 +245,15 @@ export default function ContactPage() {
         fileInputRef.current.value = "";
       }
       
-      // Reset success message after 5 seconds
-      setTimeout(() => {
-        setSubmitStatus(null);
-      }, 5000);
+      // Scroll to top để user thấy toast
+      window.scrollTo({ top: 0, behavior: "smooth" });
     } catch (error) {
       setSubmitStatus("error");
-      setTimeout(() => {
-        setSubmitStatus(null);
-      }, 5000);
+      setToast({
+        message: "Có lỗi xảy ra khi gửi tin nhắn. Vui lòng thử lại sau.",
+        type: "error",
+        isVisible: true,
+      });
     } finally {
       setIsSubmitting(false);
     }
@@ -317,10 +329,17 @@ export default function ContactPage() {
   ];
 
   return (
-    <div
-      ref={sectionRef}
-      className="min-h-screen bg-background py-12 px-4 sm:px-6 lg:px-8"
-    >
+    <>
+      <Toast
+        message={toast.message}
+        type={toast.type}
+        isVisible={toast.isVisible}
+        onClose={() => setToast((prev) => ({ ...prev, isVisible: false }))}
+      />
+      <div
+        ref={sectionRef}
+        className="min-h-screen bg-background py-12 px-4 sm:px-6 lg:px-8"
+      >
       <div className="mx-auto max-w-7xl">
         {/* Header Section */}
         <div
@@ -808,5 +827,6 @@ export default function ContactPage() {
         </div>
       </div>
     </div>
+    </>
   );
 }

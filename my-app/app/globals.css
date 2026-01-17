@@ -67,6 +67,15 @@
 html {
   background: var(--background);
   color-scheme: light dark;
+  transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  scroll-behavior: smooth;
+}
+
+/* Smooth scroll với offset cho sticky header */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-padding-top: 5rem;
+  }
 }
 
 body {
@@ -74,7 +83,27 @@ body {
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
   min-height: 100vh;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Smooth transition cho tất cả elements khi chuyển theme */
+*,
+*::before,
+*::after {
+  transition: 
+    background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Loại trừ một số elements không cần transition */
+svg,
+img,
+video,
+iframe,
+canvas {
+  transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Utility classes để sử dụng CSS variables trong Tailwind */
@@ -136,4 +165,285 @@ body {
 
 .bg-success {
   background-color: var(--success);
+}
+
+/* Improved Focus States for Accessibility */
+*:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Better button interactions với ripple effect */
+button:not(:disabled) {
+  position: relative;
+  overflow: hidden;
+  transform: translateZ(0);
+}
+
+button:not(:disabled)::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  transform: translate(-50%, -50%);
+  transition: width 0.5s ease-out, height 0.5s ease-out, opacity 0.5s ease-out;
+  opacity: 0;
+  pointer-events: none;
+}
+
+button:not(:disabled):active::before {
+  width: 300px;
+  height: 300px;
+  opacity: 1;
+}
+
+/* Improved button hover states */
+button:not(:disabled):hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+button:not(:disabled):active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Improved link hover effects */
+a:not([class*="no-hover"]):not(button a) {
+  position: relative;
+  transition: color 0.2s ease;
+  display: inline-block;
+}
+
+a:not([class*="no-hover"]):not(button a)::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--primary);
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+a:not([class*="no-hover"]):not(button a):hover {
+  color: var(--primary);
+}
+
+a:not([class*="no-hover"]):not(button a):hover::after {
+  width: 100%;
+}
+
+/* Image loading placeholder */
+.image-placeholder {
+  background: linear-gradient(
+    90deg,
+    var(--background-secondary) 0%,
+    var(--border-light) 50%,
+    var(--background-secondary) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Smooth page transitions */
+.page-transition {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Improved input focus states */
+input:focus,
+textarea:focus,
+select:focus {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(63, 191, 10, 0.15);
+}
+
+input:focus:not(:focus-visible),
+textarea:focus:not(:focus-visible),
+select:focus:not(:focus-visible) {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Card hover effects */
+.card-hover {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* Loading skeleton animation */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.skeleton {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  background: linear-gradient(
+    90deg,
+    var(--background-secondary) 0%,
+    var(--border-light) 50%,
+    var(--background-secondary) 100%
+  );
+  background-size: 200% 100%;
+}
+
+/* Smooth scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-dark);
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* Hero Section Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(63, 191, 10, 0.5), 0 0 20px rgba(63, 191, 10, 0.3);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(63, 191, 10, 0.8), 0 0 30px rgba(63, 191, 10, 0.5);
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1) rotate(180deg);
+  }
+}
+
+@keyframes dance {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg) scale(1);
+  }
+  25% {
+    transform: translateY(-8px) rotate(-3deg) scale(1.02);
+  }
+  50% {
+    transform: translateY(-12px) rotate(0deg) scale(1.05);
+  }
+  75% {
+    transform: translateY(-8px) rotate(3deg) scale(1.02);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-fade-in-down {
+  animation: fadeInDown 0.8s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.6s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.animate-sparkle {
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+.animate-dance {
+  animation: dance 2s ease-in-out infinite;
 }

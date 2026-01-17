@@ -67,6 +67,13 @@ export default function HomePage() {
     console.log("Form submitted:", formData);
     setFormSubmitted(true);
     setFormData({ name: "", phone: "", email: "", message: "" });
+    
+    // Scroll to form để user thấy success message
+    const formElement = document.querySelector('form');
+    if (formElement) {
+      formElement.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+    
     setTimeout(() => setFormSubmitted(false), 5000);
   };
 
@@ -212,14 +219,23 @@ export default function HomePage() {
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-4">
+            <h1 
+              className={`text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-4 ${
+                isVisible ? "animate-fade-in-down" : "opacity-0"
+              }`}
+            >
               CÔNG TY TNHH RĂNG VIỆT
             </h1>
             {/* Slogan */}
-            <div className="mb-6">
-              <div className="inline-flex items-center gap-2 px-6 py-2 bg-primary/10 border-2 border-primary rounded-full">
+            <div 
+              className={`mb-6 ${
+                isVisible ? "animate-scale-in" : "opacity-0"
+              }`}
+              style={{ animationDelay: isVisible ? "0.2s" : "0s" }}
+            >
+              <div className="inline-flex items-center gap-2 px-6 py-2 bg-primary/10 border-2 border-primary rounded-full hover:bg-primary/20 transition-all duration-300 hover:scale-105 animate-dance">
                 <svg
-                  className="w-5 h-5 text-primary"
+                  className="w-5 h-5 text-primary animate-sparkle"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -236,8 +252,13 @@ export default function HomePage() {
                 </p>
               </div>
             </div>
-            <div className="mb-8">
-              <h2 className="text-3xl sm:text-4xl font-bold text-primary mb-4">
+            <div 
+              className={`mb-8 ${
+                isVisible ? "animate-fade-in-up" : "opacity-0"
+              }`}
+              style={{ animationDelay: isVisible ? "0.4s" : "0s" }}
+            >
+              <h2 className="text-3xl sm:text-4xl font-bold text-primary mb-4 animate-glow">
                 Lab Tình
               </h2>
               <p className="text-lg sm:text-xl text-foreground-secondary leading-relaxed mb-6">

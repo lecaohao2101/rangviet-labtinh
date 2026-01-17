@@ -4,6 +4,8 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingButtons from "@/components/FloatingButtons";
+import ScrollToTop from "@/components/ScrollToTop";
+import ScrollProgress from "@/components/ScrollProgress";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 
 const geistSans = Geist({
@@ -57,10 +59,12 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <ThemeProvider>
+          <ScrollProgress />
           <Header />
           <main className="min-h-screen">{children}</main>
           <Footer />
           <FloatingButtons />
+          <ScrollToTop />
         </ThemeProvider>
       </body>
     </html>
