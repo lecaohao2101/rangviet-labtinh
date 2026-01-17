@@ -216,12 +216,15 @@ export default function Footer() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className="text-sm text-foreground-secondary hover:text-primary transition-all duration-300 hover:translate-x-2 hover:underline"
+                  className="text-sm text-foreground-secondary hover:text-primary transition-all duration-300 hover:translate-x-2 inline-block relative group no-hover"
                   style={{
                     transitionDelay: isVisible ? `${index * 50}ms` : "0ms",
                   }}
                 >
-                  {item.label}
+                  <span className="relative inline-block">
+                    {item.label}
+                    <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+                  </span>
                 </Link>
               ))}
             </nav>

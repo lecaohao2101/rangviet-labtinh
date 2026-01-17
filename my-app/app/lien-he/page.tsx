@@ -32,13 +32,22 @@ export default function ContactPage() {
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
+    // Fallback: Hiển thị nội dung ngay lập tức trên mobile để tránh màn hình trắng
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+    if (isMobile) {
+      setIsVisible(true);
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
         }
       },
-      { threshold: 0.1 }
+      { 
+        threshold: 0.01, // Giảm threshold để dễ trigger hơn trên mobile
+        rootMargin: "50px" // Thêm margin để trigger sớm hơn
+      }
     );
 
     const currentRef = sectionRef.current;

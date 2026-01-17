@@ -28,6 +28,11 @@ export const metadata: Metadata = {
       "Lab Tình - Chuyên sản xuất răng sứ cao cấp với công nghệ hiện đại và đội ngũ chuyên nghiệp. Hơn 5 năm kinh nghiệm trong ngành.",
     type: "website",
   },
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 5,
+  },
 };
 
 export default function RootLayout({
