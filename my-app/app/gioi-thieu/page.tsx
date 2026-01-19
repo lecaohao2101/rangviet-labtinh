@@ -482,7 +482,7 @@ export default function GioiThieuPage() {
             </p>
             <Link
               href="/lien-he"
-              className="inline-block bg-white text-primary px-6 py-3 rounded-md font-semibold hover:bg-opacity-90 transition-all duration-300"
+              className="no-hover inline-block bg-white text-primary px-6 py-3 rounded-md font-semibold hover:bg-opacity-90 hover:text-primary transition-all duration-300 hover:scale-105 hover:shadow-lg active:scale-100"
             >
               Liên hệ ngay
             </Link>

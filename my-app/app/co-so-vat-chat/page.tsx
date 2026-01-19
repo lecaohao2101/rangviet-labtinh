@@ -261,7 +261,7 @@ export default function CoSoVatChatPage() {
         >
           <Link
             href="/lien-he"
-            className="inline-block bg-primary text-white px-8 py-3 rounded-lg font-semibold hover:bg-primary-dark transition-colors duration-300"
+            className="no-hover inline-block bg-primary text-white px-8 py-3 rounded-lg font-semibold hover:bg-primary-dark hover:text-white transition-all duration-300 hover:scale-105 hover:shadow-lg active:scale-100"
           >
             Liên Hệ Với Chúng Tôi
           </Link>

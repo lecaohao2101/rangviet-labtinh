@@ -345,7 +345,7 @@ export default function WarrantyCheckPage() {
                   <button
                     type="submit"
                     disabled={isChecking}
-                    className="w-full bg-primary text-white py-3 px-6 rounded-lg font-semibold hover:bg-primary-dark transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-lg hover:shadow-primary/30 transform hover:scale-[1.02] active:scale-[0.98]"
+                    className="no-hover w-full bg-primary text-white py-3 px-6 rounded-lg font-semibold hover:bg-primary-dark hover:text-white transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-lg hover:shadow-primary/30 transform hover:scale-[1.02] active:scale-[0.98]"
                   >
                     {isChecking ? (
                       <span className="flex items-center justify-center gap-2">

@@ -100,7 +100,7 @@ export default function DoiTacRangXuZiconiaPage() {
             {/* Back Button */}
             <Link
               href="/doi-tac"
-              className="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-dark transition-colors duration-300 font-medium"
+              className="no-hover inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-dark hover:text-white transition-all duration-300 font-medium hover:scale-105 hover:shadow-lg active:scale-100"
             >
               <svg
                 className="w-5 h-5"

@@ -631,7 +631,7 @@ export default function HomePage() {
               )}
               <button
                 type="submit"
-                className="w-full bg-primary text-white px-8 py-3 rounded-lg font-semibold hover:bg-primary-dark transition-colors duration-300"
+                className="no-hover w-full bg-primary text-white px-8 py-3 rounded-lg font-semibold hover:bg-primary-dark hover:text-white transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] hover:shadow-lg"
               >
                 Gửi đăng ký
               </button>
